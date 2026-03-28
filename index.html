@@ -155,7 +155,7 @@
 
 <script type="text/javascript">
    (function() {
-       emailjs.init("SUA_PUBLIC_KEY"); 
+       emailjs.init("irMj45t3AL0ig7KMI"); 
    })();
 
    const btn = document.getElementById('btn-submit');
@@ -166,7 +166,7 @@
        btn.innerText = 'PROCESSANDO...';
        btn.disabled = true;
 
-       emailjs.sendForm('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', this)
+       emailjs.sendForm('service_aeh748f', 'template_rx5d91h', this)
            .then(function() {
                statusDiv.innerHTML = '<span style="color: #2ea44f;">✓ INSCRIÇÃO REALIZADA! Cheque seu e-mail.</span>';
                btn.innerText = 'PRONTO!';
@@ -177,6 +177,7 @@
                btn.disabled = false;
            });
    });
+    
 </script>
 
 </body>
