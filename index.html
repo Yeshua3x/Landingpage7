@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Fast Track | 8 Meses</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        :root {
+            --primary: #1a2a6c;
+            --accent: #f24537;
+            --text: #333;
+            --light: #f8f9fa;
+        }
+
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: var(--light); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0;
+            color: var(--text);
+        }
+
+        .container {
+            background: white;
+            padding: 3rem 2rem;
+            border-top: 8px solid var(--primary);
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        /* Design de Letras e Tipografia */
+        .logo-text {
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin: 0.5rem 0;
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        .highlight {
+            color: var(--accent);
+            display: block;
+            font-size: 3rem;
+            border-bottom: 4px solid var(--accent);
+            width: fit-content;
+            margin: 0.5rem auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+        }
+
+        p { 
+            color: #555; 
+            font-size: 1.1rem; 
+            line-height: 1.5;
+            margin-bottom: 2rem; 
+        }
+
+        /* Formulário Estilizado */
+        .form-group { margin-bottom: 1rem; text-align: left; }
+        
+        label { font-size: 0.8rem; font-weight: bold; color: var(--primary); text-transform: uppercase; }
+
+        input { 
+            width: 100%; 
+            padding: 15px; 
+            margin-top: 5px;
+            border: 2px solid #eee; 
+            border-radius: 4px; 
+            box-sizing: border-box; 
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus { border-color: var(--primary); outline: none; }
+
+        button { 
+            width: 100%; 
+            padding: 18px; 
+            background: var(--accent); 
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-size: 1.1rem;
+            font-weight: 900; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.2s, background 0.3s;
+            margin-top: 1rem;
+        }
+
+        button:hover { background: #d43428; transform: translateY(-2px); }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+
+        #status { margin-top: 1.5rem; font-weight: bold; }
+
+        .footer-note {
+            font-size: 0.7rem;
+            color: #aaa;
+            margin-top: 2rem;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo-text">Methodology Protocol</div>
+    <h1>SPEAK ENGLISH IN</h1>
+    <span class="highlight">08 MONTHS</span>
+    <div class="badge">VAGAS LIMITADAS PARA 2026</div>
+    
+    <p>O método de aceleração focado em conversação real para quem não tem tempo a perder.</p>
+    
+    <form id="course-form">
+        <div class="form-group">
+            <label>Nome Completo</label>
+            <input type="text" name="user_name" placeholder="Ex: João Silva" required>
+        </div>
+        <div class="form-group">
+            <label>Seu Melhor E-mail</label>
+            <input type="email" name="user_email" placeholder="email@exemplo.com" required>
+        </div>
+        <button type="submit" id="btn-submit">QUERO A MINHA VAGA →</button>
+    </form>
+    
+    <div id="status"></div>
+    <div class="footer-note">Segurança 100% garantida via SSL encryption</div>
+</div>
+
+<script type="text/javascript">
+   (function() {
+       emailjs.init("SUA_PUBLIC_KEY"); 
+   })();
+
+   const btn = document.getElementById('btn-submit');
+   const statusDiv = document.getElementById('status');
+
+   document.getElementById('course-form').addEventListener('submit', function(event) {
+       event.preventDefault();
+       btn.innerText = 'PROCESSANDO...';
+       btn.disabled = true;
+
+       emailjs.sendForm('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', this)
+           .then(function() {
+               statusDiv.innerHTML = '<span style="color: #2ea44f;">✓ INSCRIÇÃO REALIZADA! Cheque seu e-mail.</span>';
+               btn.innerText = 'PRONTO!';
+               document.getElementById('course-form').reset();
+           }, function(error) {
+               statusDiv.innerHTML = '<span style="color: var(--accent);">✗ ERRO. Tente novamente em instantes.</span>';
+               btn.innerText = 'TENTAR NOVAMENTE';
+               btn.disabled = false;
+           });
+   });
+</script>
+
+</body>
+  </html>
